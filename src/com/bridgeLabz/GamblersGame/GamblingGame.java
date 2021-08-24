@@ -12,6 +12,9 @@ public class GamblingGame {
 	int numberOfDaysWon = 0;
 	int numberOfDaysLost = 0;
 	
+	int maximumWins = 0;
+	int maximumLosses = 0;
+	
 	public static void main(String args[]) {
 		
 
@@ -66,7 +69,7 @@ public class GamblingGame {
 		}
 		
 		if (totalAmountWonOrLost > 0) {
-			System.out.println("Total amount won for 20 days is " + totalAmountWonOrLost);
+			System.out.println("Total amount won for 20 days is " + totalAmountWonOrLost);			
 		} else {
 			System.out.println("Total amount lost for 20 days is " + Math.abs(totalAmountWonOrLost));
 		}
@@ -81,7 +84,23 @@ public class GamblingGame {
 			System.out.println("Number of days won on month " + i +" is " + numberOfDaysWon);
 			System.out.println("Number of days lost on month " + i +" is " + numberOfDaysLost);
 			
+			if (numberOfDaysLost > maximumLosses) {
+				maximumLosses = numberOfDaysLost;
+			}
+			
+			if (numberOfDaysWon > maximumWins) {
+				maximumWins = numberOfDaysWon;
+			}
+			
+			numberOfDaysLost = 0;
+			numberOfDaysWon = 0;
+			totalAmountWonOrLost = 0;
+			
 		}
+		
+		System.out.println("The maximum amount won is " + (maximumWins*50));
+		System.out.println("The maximum amount loss is " + (maximumLosses*50));
+
 	}
 	
 }
