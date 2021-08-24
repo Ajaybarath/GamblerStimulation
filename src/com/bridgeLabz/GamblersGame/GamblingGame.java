@@ -92,6 +92,11 @@ public class GamblingGame {
 				maximumWins = numberOfDaysWon;
 			}
 			
+			if (totalAmountWonOrLost < 0) {
+				System.out.println("Stopped playing because lost " + Math.abs(totalAmountWonOrLost) + "$ this month");
+				break;
+			}
+			
 			numberOfDaysLost = 0;
 			numberOfDaysWon = 0;
 			totalAmountWonOrLost = 0;
