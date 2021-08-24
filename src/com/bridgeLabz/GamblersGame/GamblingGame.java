@@ -6,7 +6,6 @@ public class GamblingGame {
 	static final int EVERY_GAME_STAKE = 1;
 	
 	int gamesWon = 0;
-	int gamesLost = 0;
 	
 	public static void main(String args[]) {
 		
@@ -28,7 +27,7 @@ public class GamblingGame {
 			System.out.println("Gambler won 1 $");
 		}
 		else {
-			gamesLost ++;
+			gamesWon --;
 			System.out.println("Gambler lost 1 $");
 		}
 		
@@ -36,15 +35,15 @@ public class GamblingGame {
 	
 	public void exitLogic() {
 		
-		while(gamesWon < 50 && gamesLost < 50) {
+		while(Math.abs(gamesWon) < (INITIAL_STAKE/2)) {
 			gamePlay();
 		}
-		
-		if (gamesWon == 50) {
-			System.out.println("Player resigned by winning 50$");
+		 	
+		if (gamesWon == (INITIAL_STAKE/2)) {
+			System.out.println("Player resigned by winning " + (INITIAL_STAKE + gamesWon));
 		}
 		else {
-			System.out.println("Player resigned by loosing 50$");
+			System.out.println("Player resigned by loosing " + (INITIAL_STAKE + gamesWon));
 		}
 	}
  
