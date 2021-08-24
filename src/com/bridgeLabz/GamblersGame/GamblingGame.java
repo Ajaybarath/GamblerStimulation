@@ -7,8 +7,19 @@ public class GamblingGame {
 	
 	public static void main(String args[]) {
 		
+
 		System.out.println("Money at stake for every game : " + EVERY_GAME_STAKE);
 		System.out.println("Money at stake for every day : " + INITIAL_STAKE);
+		
+		int gameStatus = (int) (Math.random()*10) % 2;
+		
+		if (gameStatus == 1) {
+			System.out.println("Gambler won 1 $");
+		}
+		else {
+			System.out.println("Gambler lost 1 $");
+		}
+ 		
 	}
 
 }
