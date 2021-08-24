@@ -7,6 +7,8 @@ public class GamblingGame {
 	
 	int gamesWon = 0;
 	
+	int totalAmountWonOrLost = 0;
+	
 	public static void main(String args[]) {
 		
 
@@ -14,7 +16,8 @@ public class GamblingGame {
 		System.out.println("Money at stake for every day : " + INITIAL_STAKE);
 		
 		GamblingGame player = new GamblingGame();
-		player.exitLogic();
+		player.gamePlayForNDays(20);
+//		player.exitLogic();
  		
 	}
 	
@@ -24,11 +27,11 @@ public class GamblingGame {
 		
 		if (gameStatus == 1) {
 			gamesWon ++;
-			System.out.println("Gambler won 1 $");
+//			System.out.println("Gambler won 1 $");
 		}
 		else {
 			gamesWon --;
-			System.out.println("Gambler lost 1 $");
+//			System.out.println("Gambler lost 1 $");
 		}
 		
 	}
@@ -45,6 +48,23 @@ public class GamblingGame {
 		else {
 			System.out.println("Player resigned by loosing " + (INITIAL_STAKE + gamesWon));
 		}
+		
+		totalAmountWonOrLost += gamesWon;
+
+	}
+	
+	public void gamePlayForNDays (int numberOfDays) {
+		
+		for (int i=0;i<numberOfDays;i++) {
+			exitLogic();
+			gamesWon = 0;
+		}
+		if (totalAmountWonOrLost > 0) {
+			System.out.println("Totla amount won for 20 days is " + totalAmountWonOrLost);
+		} else {
+			System.out.println("Totla amount lost for 20 days is " + Math.abs(totalAmountWonOrLost));
+		}
+		
 	}
  
 	
