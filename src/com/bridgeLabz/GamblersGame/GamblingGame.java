@@ -9,6 +9,9 @@ public class GamblingGame {
 	
 	int totalAmountWonOrLost = 0;
 	
+	int numberOfDaysWon = 0;
+	int numberOfDaysLost = 0;
+	
 	public static void main(String args[]) {
 		
 
@@ -16,7 +19,7 @@ public class GamblingGame {
 		System.out.println("Money at stake for every day : " + INITIAL_STAKE);
 		
 		GamblingGame player = new GamblingGame();
-		player.gamePlayForNDays(20);
+		player.monthlyGamePlay();
 //		player.exitLogic();
  		
 	}
@@ -43,10 +46,12 @@ public class GamblingGame {
 		}
 		 	
 		if (gamesWon == (INITIAL_STAKE/2)) {
-			System.out.println("Player resigned by winning " + (INITIAL_STAKE + gamesWon));
+			numberOfDaysWon ++;
+//			System.out.println("Player resigned by winning " + (INITIAL_STAKE + gamesWon));
 		}
 		else {
-			System.out.println("Player resigned by loosing " + (INITIAL_STAKE + gamesWon));
+			numberOfDaysLost ++;
+//			System.out.println("Player resigned by loosing " + (INITIAL_STAKE + gamesWon));
 		}
 		
 		totalAmountWonOrLost += gamesWon;
@@ -59,13 +64,24 @@ public class GamblingGame {
 			exitLogic();
 			gamesWon = 0;
 		}
+		
 		if (totalAmountWonOrLost > 0) {
-			System.out.println("Totla amount won for 20 days is " + totalAmountWonOrLost);
+			System.out.println("Total amount won for 20 days is " + totalAmountWonOrLost);
 		} else {
-			System.out.println("Totla amount lost for 20 days is " + Math.abs(totalAmountWonOrLost));
+			System.out.println("Total amount lost for 20 days is " + Math.abs(totalAmountWonOrLost));
 		}
 		
 	}
  
+	
+	public void monthlyGamePlay() {
+		
+		for (int i=1;i<=12;i++) {
+			gamePlayForNDays(20);
+			System.out.println("Number of days won on month " + i +" is " + numberOfDaysWon);
+			System.out.println("Number of days lost on month " + i +" is " + numberOfDaysLost);
+			
+		}
+	}
 	
 }
